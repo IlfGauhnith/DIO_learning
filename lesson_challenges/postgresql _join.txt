@@ -1,0 +1,25 @@
+-- Curso -> Conceitos e melhores práticas com bancos de dados PostgreSQL
+-- Aula -> Trabalhando com Joins
+
+-- Elaborar uma query para trazer informações das transações junto com informações do cliente.
+
+SELECT banco.nome,
+	agencia.nome,
+	cliente_transacoes.conta_corrente_numero,
+	cliente_transacoes.conta_corrente_digito,
+	cliente.nome,
+	tipo_transacao.nome,
+	cliente_transacoes.valor
+FROM banco
+JOIN agencia 
+	ON agencia.banco_numero = banco.numero
+JOIN conta_corrente
+	ON conta_corrente.banco_numero = banco.numero
+	AND conta_corrente.agencia_numero = agencia.numero
+JOIN cliente_transacoes
+	ON cliente_transacoes.conta_corrente_numero = conta_corrente.numero
+	AND cliente_transacoes.conta_corrente_digito = conta_corrente.digito
+JOIN tipo_transacao
+	ON tipo_transacao.id = cliente_transacoes.tipo_transacao_id
+JOIN cliente
+	ON cliente.numero = cliente_transacoes.cliente_numero;
