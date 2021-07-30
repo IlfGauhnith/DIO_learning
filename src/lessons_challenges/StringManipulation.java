@@ -54,13 +54,12 @@ public class StringManipulation {
         char[] charArray = txt.toCharArray();
 
         for (int i = 0 ; i < charArray.length ; i++) {
-            if ((int) charArray[i] + alphabetShift > 90) {
-                int asciiOffset = (int) charArray[i] + alphabetShift;
-                asciiOffset = asciiOffset - 90;
-
-                charArray[i] = (char) (((int) charArray[i] + alphabetShift) - 25+asciiOffset);
+            int asciiCodeShifted = (int) charArray[i] - alphabetShift;
+            if (asciiCodeShifted < 65) {
+                asciiCodeShifted = asciiCodeShifted + 26;
+                charArray[i] = (char) asciiCodeShifted;
             } else {
-                charArray[i] = (char) ((int) charArray[i] + alphabetShift);
+                charArray[i] = (char) asciiCodeShifted;
             }
         }
 
@@ -83,6 +82,6 @@ public class StringManipulation {
         exercicioQuatro();
 
         //Exercício extra implementando a cifra de césar. (Como no exercício 1253 da https://www.urionlinejudge.com.br/).
-        ceaserCipher(2, "Given your sentence youre handed the snakes of divine");
+        ceaserCipher(2, "Ikxgp aqwt ugpvgpeg aqwtg jcpfgf vjg upcmgu qh fkxkpg");
     }
 }
