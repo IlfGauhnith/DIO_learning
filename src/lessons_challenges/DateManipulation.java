@@ -2,6 +2,7 @@ package lessons_challenges;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -44,6 +45,10 @@ public class DateManipulation {
         System.out.println("Enter the purchase date (dd/mm/yyyy): ");
         userInput = inputScanner.next();
 
-        System.out.println("You have until [" + paymentDeadline(userInput) + "] to pay.");
+        System.out.println("You have until [" + paymentDeadline(userInput) + "] to pay.\n");
+
+        LocalDateTime challengeDate = LocalDateTime.of(2010, 05, 15, 10, 0, 0);
+        challengeDate = challengeDate.plusYears(4).plusMonths(6).plusHours(13);
+        System.out.println(challengeDate);
     }
 }
